@@ -7,10 +7,10 @@ public class BorrowerRecord {
     private Date checkoutDate;
     private Date returnDate;
 
-    public BorrowerRecord(Book book, Date checkoutDate, Date returnDate) {
+    public BorrowerRecord(Book book, Date checkoutDate) {
         this.book = book;
         this.checkoutDate = checkoutDate;
-        this.returnDate = returnDate;
+        this.returnDate = null;
     }
 
     public Book getBook() {
@@ -42,6 +42,6 @@ public class BorrowerRecord {
     }
 
     public void markAsReturned(){
-        this.returnDate= new Date();
+        this.returnDate = new Date();
     }
 }

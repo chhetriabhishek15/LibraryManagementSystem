@@ -9,7 +9,7 @@ public class Patron {
     private String patronName;
     private final List<BorrowerRecord> borrowerRecordList;
 
-    public Patron(String patronId, String patronName, List<BorrowerRecord> borrowerRecordList) {
+    public Patron(String patronId, String patronName) {
         this.patronId = patronId;
         this.patronName = patronName;
         this.borrowerRecordList = new ArrayList<>();

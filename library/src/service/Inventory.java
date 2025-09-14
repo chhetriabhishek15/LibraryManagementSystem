@@ -1,13 +1,13 @@
 package service;
 
+import interfaces.InventoryService;
 import models.Book;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inventory implements InventoryService{
-    private List<Book> books;
+public class Inventory implements InventoryService {
+    private final List<Book> books;
 
     public Inventory(List<Book> books) {
         this.books = new ArrayList<>(books);
@@ -40,7 +40,7 @@ public class Inventory implements InventoryService{
     @Override
     public Book searchByIsbn(String isbn) {
         return books.stream()
-                .filter(book -> book.getISBN().equals(isbn))
+                .filter(book -> book.getISBN().equalsIgnoreCase(isbn))
                 .findFirst()
                 .orElse(null);
     }
