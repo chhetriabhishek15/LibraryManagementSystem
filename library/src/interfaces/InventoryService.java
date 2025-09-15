@@ -3,6 +3,7 @@ package interfaces;
 import models.Book;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface InventoryService {
     void addBook(Book book);
@@ -10,4 +11,6 @@ public interface InventoryService {
     List<Book> searchByTitle(String title);
     List<Book> searchByAuthor(String author);
     Book searchByIsbn(String isbn);
+    Optional<Book> acquireBookForCheckout(String isbn);
+    void processReturnedBook(String isbn);
 }

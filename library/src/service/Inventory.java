@@ -1,10 +1,12 @@
 package service;
 
+import constants.BookStatus;
 import interfaces.InventoryService;
 import models.Book;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Inventory implements InventoryService {
     private final List<Book> books;
@@ -44,4 +46,26 @@ public class Inventory implements InventoryService {
                 .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public Optional<Book> acquireBookForCheckout(String isbn) {
+        Book book = searchByIsbn(isbn);
+        if (book == null || !book.isAvailable()){
+            return  Optional.empty();
+        }
+        book.setBookStatus(BookStatus.BOOKED);
+        return Optional.of(book);
+    }
+
+    @Override
+    public void processReturnedBook(String isbn) {
+        Book book = searchByIsbn(isbn);
+        if (book != null){
+            book.setBookStatus(BookStatus.AVAILABLE);
+        }
+        else {
+            System.err.println("Attempted to process a return for a non-existent book with ISBN: " + isbn);
+        }
+        }
 }
+

@@ -41,7 +41,7 @@ public class Patron {
 
     public boolean returnBook(String bookISBN){
         Optional<BorrowerRecord> activeRecord = borrowerRecordList.stream()
-                .filter(record -> record.isActiveForBook(bookISBN))
+                .filter(record -> record.hasBeenReturned(bookISBN))
                 .findFirst();
 
         if (activeRecord.isPresent()){
