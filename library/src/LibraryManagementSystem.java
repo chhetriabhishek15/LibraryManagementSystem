@@ -1,15 +1,7 @@
-import constants.BookStatus;
 import factory.LibraryFactory;
-import interfaces.FineService;
 import interfaces.InventoryService;
 import interfaces.LibraryService;
-import models.Book;
 import models.Patron;
-import service.Fine;
-import service.Inventory;
-import service.Library;
-
-import java.util.ArrayList;
 
 public class LibraryManagementSystem {
     public static void main(String[] args) {

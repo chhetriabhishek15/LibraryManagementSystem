@@ -4,24 +4,24 @@ This project manages books, patrons, and the lending process, including late fee
 
 ✨ Features
 
-Book and Patron Management: Add, update, and remove books and patrons.
+- Book and Patron Management: Add, update, and remove books and patrons.
 
-Lending Process: Checkout and return books, with a record of each transaction.
+- Lending Process: Checkout and return books, with a record of each transaction.
 
-Late Fee Calculation: Automatically calculates late fees for overdue books.
+- Late Fee Calculation: Automatically calculates late fees for overdue books.
 
-SOLID Principles: Designed with a focus on clean, maintainable, and scalable code.
+- SOLID Principles: Designed with a focus on clean, maintainable, and scalable code.
 
-Design Patterns: Utilizes Factory and Strategy patterns for flexible object creation and behavior.
+- Design Patterns: Utilizes Factory and Strategy patterns for flexible object creation and behavior.
 
 
 🧩 Design and Architecture
 
-The project is structured to demonstrate key software design principles:
+- The project demonstrates several key OOP principles and design patterns:
 
-Dependency Injection: Dependencies are provided through constructors to promote flexibility and testability.
+- Dependency Injection: Dependencies are provided through constructors to promote flexibility and testability.
 
-Strategy Pattern: The FineCalculator uses this pattern, allowing different fine calculation rules to be easily added without changing core lending logic.
+- Strategy Pattern: The FineCalculator uses this pattern, allowing different fine calculation rules to be easily added without changing core lending logic.
 
-Factory Pattern: The LibraryFactory centralizes the creation of objects, making the system easy to configure and extend.
+- Factory Pattern: The LibraryFactory centralizes the creation of objects, making the system easy to configure and extend.
 
