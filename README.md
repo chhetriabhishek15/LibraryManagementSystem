@@ -1,27 +1,73 @@
-📚 Library Management System
-A simple Library Management System implemented in Java to demonstrate core Object-Oriented Programming (OOP) concepts and common design patterns. 
-This project manages books, patrons, and the lending process, including late fee calculation.
+[//]: # (**Library Management System**)
+A Java-based library management system built with clean architecture principles and design patterns. This project demonstrates practical implementation of Object-Oriented Programming concepts including inheritance, encapsulation, polymorphism, and abstraction.
 
-✨ Features
+[//]: # (**Project Overview**)
+This system handles the core operations of a library: managing books and patrons, processing checkouts and returns, calculating late fees, and managing book reservations. The codebase follows SOLID principles and incorporates multiple design patterns for maintainability and extensibility.
 
-- Book and Patron Management: Add, update, and remove books and patrons.
+[//]: # (Features)
+Core Functionality
+Book Management: Add, remove, and search books by title, author, or ISBN
 
-- Lending Process: Checkout and return books, with a record of each transaction.
+Patron Management: Register library members and track their borrowing history
 
-- Late Fee Calculation: Automatically calculates late fees for overdue books.
+Checkout/Return Process: Handle book lending with automatic status tracking
 
-- SOLID Principles: Designed with a focus on clean, maintainable, and scalable code.
+Fine Calculation: Automatic late fee computation based on configurable rates
 
-- Design Patterns: Utilizes Factory and Strategy patterns for flexible object creation and behavior.
+Inventory Tracking: Real-time monitoring of book availability
 
+[//]: # (Advanced Features)
+Reservation System: Patrons can reserve books that are currently checked out
 
-🧩 Design and Architecture
+Notification System: Automatic alerts when reserved books become available
 
-- The project demonstrates several key OOP principles and design patterns:
+Borrowing History: Complete transaction records for each patron
 
-- Dependency Injection: Dependencies are provided through constructors to promote flexibility and testability.
+[//]: # (**Architecture Design Patterns Used**)
 
-- Strategy Pattern: The FineCalculator uses this pattern, allowing different fine calculation rules to be easily added without changing core lending logic.
+Factory Pattern (LibraryFactory)
 
-- Factory Pattern: The LibraryFactory centralizes the creation of objects, making the system easy to configure and extend.
+Centralizes object creation and configuration
 
+Makes the system easy to extend and maintain
+
+Strategy Pattern (FineService)
+
+Enables flexible fine calculation algorithms
+
+Allows easy modification of penalty rules
+
+Observer Pattern (ReservationService, NotificationService)
+
+Implements automatic notifications for book availability
+
+Decouples reservation management from notification logic
+
+Package Structure
+text
+src/
+├── constants/          # Configuration enums and constants
+├── factory/           # Factory pattern implementations
+├── interfaces/        # Core system contracts
+├── models/           # Domain entities
+├── service/          # Business logic implementations
+└── LibraryManagementSystem.java    # Main application entry point
+Class Relationships
+The system is built around several key interfaces that define contracts for different components:
+
+Library - Main library operations
+
+Inventory - Book inventory management
+
+Fine - Fee calculation strategies
+
+Notification - Communication with patrons
+
+ReservationObserver - Reservation event handling
+
+Configuration
+The system uses configurable constants for fine calculation:
+
+Grace period: 2 days
+
+Daily fine rate: $1.50

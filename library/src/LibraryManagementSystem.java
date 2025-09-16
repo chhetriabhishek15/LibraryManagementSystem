@@ -1,44 +1,49 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import factory.LibraryFactory;
 import interfaces.Inventory;
 import interfaces.Library;
 import models.Patron;
 
 public class LibraryManagementSystem {
+    private static final Logger logger = LoggerFactory.getLogger(LibraryManagementSystem.class);
+
     public static void main(String[] args) {
+        logger.info("Starting LibraryManagementSystem");
+
         Inventory inventory = LibraryFactory.createInventory();
         Library library = LibraryFactory.createLibrary(inventory);
 
         Patron alice = new Patron("P001", "Alice");
         Patron bob = new Patron("P002", "Bob");
 
-        System.out.println("=== Borrowing Book ===");
+        logger.info("=== Borrowing Book ===");
         boolean borrowed = library.checkoutBook("Robert C. Martin", alice);
-        System.out.println("Book borrowed: " + borrowed); // Expected: true
+        logger.info("Book borrowed by Alice: {}", borrowed); // Expected: true
 
-        System.out.println("\n=== Borrowing Already Borrowed Book ===");
+        logger.info("=== Borrowing Already Borrowed Book ===");
         boolean borrowedAgain = library.checkoutBook("Robert C. Martin", bob);
-        System.out.println("Book borrowed by Bob: " + borrowedAgain); // Expected: false
+        logger.info("Book borrowed by Bob: {}", borrowedAgain); // Expected: false
 
-        System.out.println("\n=== Adding Reservation ===");
+        logger.info("=== Adding Reservation ===");
         library.addReservation("Robert C. Martin", bob);
-        System.out.println("Bob has reserved the book.");
+        logger.info("Bob has reserved the book.");
 
-        System.out.println("\n=== Adding Reservation ===");
+        logger.info("=== Adding Reservation ===");
         library.addReservation("Robert C. Martin", alice);
-        System.out.println("Alice has reserved the book.");
+        logger.info("Alice has reserved the book.");
 
-        System.out.println("\n=== Returning Book ===");
+        logger.info("=== Returning Book ===");
         boolean returned1 = library.returnBook("Robert C. Martin", alice);
-        System.out.println("Book returned by Alice: " + returned1); // Expected: true
+        logger.info("Book returned by Alice: {}", returned1); // Expected: true
 
-        System.out.println("\n=== Bob Borrows Reserved Book ===");
+        logger.info("=== Bob Borrows Reserved Book ===");
         boolean borrowedByBob = library.checkoutBook("Robert C. Martin", bob);
-        System.out.println("Book borrowed by Bob: " + borrowedByBob); // Expected: true
+        logger.info("Book borrowed by Bob: {}", borrowedByBob); // Expected: true
 
-        System.out.println("\n=== Returning Book ===");
+        logger.info("=== Returning Book ===");
         boolean returned2 = library.returnBook("Robert C. Martin", bob);
-        System.out.println("Book returned by Alice: " + returned2); // Expected: true
-
+        logger.info("Book returned by Bob: {}", returned2); // Expected: true
     }
 }
-
