@@ -2,6 +2,6 @@ package interfaces;
 
 import models.BorrowerRecord;
 
-public interface FineService {
+public interface Fine {
     double calculateFine(BorrowerRecord record);
 }

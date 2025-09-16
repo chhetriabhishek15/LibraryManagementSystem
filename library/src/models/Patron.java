@@ -1,5 +1,8 @@
 package models;
 
+import interfaces.ReservationObserver;
+import service.NotificationService;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;

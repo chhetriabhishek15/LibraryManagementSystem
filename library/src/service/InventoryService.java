@@ -1,17 +1,17 @@
 package service;
 
 import constants.BookStatus;
-import interfaces.InventoryService;
+import interfaces.Inventory;
 import models.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Inventory implements InventoryService {
+public class InventoryService implements Inventory {
     private final List<Book> books;
 
-    public Inventory(List<Book> books) {
+    public InventoryService(List<Book> books) {
         this.books = new ArrayList<>(books);
     }
 

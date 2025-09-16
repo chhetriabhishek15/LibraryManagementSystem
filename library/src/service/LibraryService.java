@@ -1,24 +1,21 @@
 package service;
 
-import interfaces.FineService;
-import interfaces.InventoryService;
-import interfaces.LibraryService;
+import interfaces.*;
 import models.Book;
 import models.BorrowerRecord;
 import models.Patron;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
-public class Library implements LibraryService {
-    private final FineService fineCalculator;
-    private final InventoryService inventory;
+public class LibraryService implements Library {
+    private final ReservationObserver reservationService;
+    private final Fine fineCalculator;
+    private final Inventory inventory;
     private final Map<String,BorrowerRecord> borrowRecord;
 
 
-    public Library(FineService fineCalculator, InventoryService inventory) {
+    public LibraryService(ReservationObserver reservationService, Fine fineCalculator, Inventory inventory) {
+        this.reservationService = reservationService;
         this.fineCalculator = fineCalculator;
         this.inventory = inventory;
         this.borrowRecord = new HashMap<>();
@@ -62,7 +59,14 @@ public class Library implements LibraryService {
                     else {
                         System.out.println("Thank you for returning the book");
                     }
+                    reservationService.notifyAvailable(record.getBook());
         });
         return processedBook.isPresent();
+    }
+
+    @Override
+    public void addReservation(String isbn, Patron patron) {
+        Optional<Book> bookOptional = Optional.ofNullable(inventory.searchByIsbn(isbn));
+        bookOptional.ifPresent(book -> reservationService.addReservation(book,patron));
     }
 }

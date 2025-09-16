@@ -1,12 +1,11 @@
 package service;
 
 import constants.FineConfig;
-import interfaces.FineService;
 import models.BorrowerRecord;
 
 import java.util.concurrent.TimeUnit;
 
-public class Fine implements FineService {
+public class FineService implements interfaces.Fine {
 
     @Override
     public double calculateFine(BorrowerRecord record) {
